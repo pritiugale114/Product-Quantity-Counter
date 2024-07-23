@@ -1,66 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Quantity Counter </title>
     <style>
-        .product-container{
-            margin:20px auto;
+        .product-container {
+            margin: 20px auto;
             width: 200px;
-            border:1px solid black;
-            border-radius: 10px ;
+            border: 1px solid black;
+            border-radius: 10px;
             box-shadow: 0px 0px 10px rgb(19, 18, 18);
             background-color: rgb(243, 237, 237);
         }
-        .text{
+
+        .text {
             font-size: 15px;
-            font-family:Arial, Helvetica, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             text-align: center;
         }
-        .main-img{
-            height:200px;
-            width:200px;
+
+        .main-img {
+            height: 200px;
+            width: 200px;
             object-fit: cover;
-            border-radius:10px;
+            border-radius: 10px;
         }
-        .counter-container{
+
+        .counter-container {
             margin-top: 20px;
             display: flex;
             justify-content: space-around;
             align-items: center;
         }
-        .img{
-            height:30px;
-            cursor: pointer;
-        }
-        .btn{
-            height: 50px;
-            width:150px;
-            border-radius:25px;
-            margin-left:25px ;
-            margin-top:20px;
-            margin-bottom: 10px;
-            background-color:#a1a1a1 ;
-            color: black;
+
+        .img {
+            height: 30px;
             cursor: pointer;
         }
 
+        .btn {
+            height: 50px;
+            width: 150px;
+            border-radius: 25px;
+            margin-left: 25px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            background-color: #a1a1a1;
+            color: black;
+            cursor: pointer;
+        }
     </style>
 </head>
+
 <body>
     <div class="product-container">
         <img src="/main-img.jpg" class="main-img">
         <p class="text">Samsung Galaxy Z Fold6 5G AI Smartphone</p>
         <div class="counter-container">
-            <img src="/plus.png" class="img" id="plus-img">
-            <span class="Quantity-text" id="Quantity-text">1</span>
-            <img src="/minus.png" class="img" id="minus-img">
+            <img src="/plus.png" class="img" id="plus-img" onclick="Quantitychange('inc')">
+            <span class="Quantity-text" id="quantity-text">1</span>
+            <img src="/minus.png" class="img" id="minus-img" onclick="Quantitychange('dec')">
         </div>
         <button type="text" class="btn">BUY NOW</button>
     </div>
     <script>
+        function Quantitychange(action) {
+            const quantityelement = document.getElementById("quantity-text")
 
+            let quantity = parseInt(quantityelement.innerText);
+
+            if(quantity==1 && action == 'dec'){
+                alert('quantity can  not be less than 1')
+                return
+            }
+
+            if(action=='inc'){
+                quantityelement.innerText= ++quantity
+            }
+            else{
+                quantityelement.innerText= --quantity
+            }
+
+        }
     </script>
 </body>
+
 </html>
